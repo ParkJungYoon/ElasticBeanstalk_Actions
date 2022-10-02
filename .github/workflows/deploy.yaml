@@ -96,13 +96,13 @@ jobs:
       # Make ZIP file with source code
       # -x는 zip파일 생성 시에 해당 부분들을 제외한다.
       - name: Generate deployment package
-        run: zip -r modumarket-server.zip . -x '*.git*' './src/*' './aws/*' awscliv2.zip
+        run: zip -r modumarket-server.zip . -x '*.git*' './src/*' './aws/*' './node_modules/*' awscliv2.zip
 
       # Deploy to Elastic Beanstalk
       # application_name과 environment_name을 꼭 확인하자!
       # 해당 부분은 꼭 같아야 한다!!
       - name: deploy main to EB
-        uses: einaregilsson/beanstalk-deploy@v14
+        uses: einaregilsson/beanstalk-deploy@v16
         with:
           aws_access_key: ${{ secrets.AWS_EB_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_EB_SECRET_ACCESS_KEY }}
