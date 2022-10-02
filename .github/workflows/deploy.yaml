@@ -111,3 +111,4 @@ jobs:
           region: ${{ secrets.AWS_REGION }}
           version_label: ${{github.SHA}}
           deployment_package: modumarket-server.zip
+          use_existing_version_if_available: true
